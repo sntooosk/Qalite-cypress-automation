@@ -1,7 +1,8 @@
+@logout
 Feature: Organization management
 
   Background:
-    Given the user is on the organization page
+    Given the user logs in with the default credentials
 
   Scenario: Create a new organization
     When the user starts creating a new organization

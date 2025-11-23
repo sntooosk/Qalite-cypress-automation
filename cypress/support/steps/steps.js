@@ -81,4 +81,5 @@ When('the user opens the organization management menu', () => {
 
 Then('the user deletes the organization', () => {
   OrganizationPage.deleteOrganization()
+  OrganizationPage.confirmOrganization()
 })

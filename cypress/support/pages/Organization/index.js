@@ -31,6 +31,9 @@ class OrganizationPage extends BasePage {
   deleteOrganization() {
     this.click(organizationElements.deleteOrganizationButton)
   }
+  confirmOrganization() {
+    this.click(organizationElements.confirmDeleteButton)
+  }
 
   rememberCreatedOrganizationId() {
     if (!this.createdOrganizationName) {
