@@ -13,6 +13,13 @@ class OrganizationPage {
     cy.get(el.buttonNewOrg).click()
   }
 
+  clickButtonGerenciar() {
+    cy.get(el.buttonGerenciarOrg).click()
+  }
+
+  clickButtonApagarOrg() {
+    cy.get(el.buttonApagarOrg).click()
+  }
   typeNewOrganization(name) {
     this.lastOrganizationName = name
     cy.get(el.inputNewOrg).clear()

@@ -27,6 +27,14 @@ When('clico no card do org', () => {
   Organization.clickSavedOrganizationCard()
 })
 
+Then('clico no botao apagar', () => {
+  Organization.clickButtonApagarOrg()
+})
+
+And('clico no botao gerenciar Organizacao', () => {
+  Organization.clickButtonGerenciar()
+})
+
 //
 // LOGIN STEPS
 //

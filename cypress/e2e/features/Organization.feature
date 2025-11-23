@@ -10,3 +10,5 @@ Feature: Organization
 
   Scenario: apagar Organizacao
     When clico no card do org
+    And clico no botao gerenciar Organizacao
+    Then clico no botao apagar
