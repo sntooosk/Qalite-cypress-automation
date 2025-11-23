@@ -1,4 +1,5 @@
 import Login from './pages/Login'
+import users from '../fixtures/users.json'
 
 const clearSavedSessions = () => {
   if (
@@ -15,9 +16,12 @@ Cypress.Commands.add('resetSession', () => {
   clearSavedSessions()
 })
 
-Cypress.Commands.add('login', (email, password) => {
-  cy.resetSession()
-  Login.accessLoginPage()
-  Login.fillCredentials({ email, password })
-  Login.submitForm()
-})
+Cypress.Commands.add(
+  'login',
+  (email = users.email, password = users.password) => {
+    cy.resetSession()
+    Login.accessLoginPage()
+    Login.fillCredentials({ email, password })
+    Login.submitForm()
+  },
+)
