@@ -6,13 +6,11 @@ class LoginPage {
   }
 
   typeEmail(email) {
-    cy.get(el.inputEmail).clear()
-    cy.get(el.inputEmail).type(email)
+    this.typeIntoField(el.inputEmail, email)
   }
 
   typePassword(password) {
-    cy.get(el.inputPassword).clear()
-    cy.get(el.inputPassword).type(password)
+    this.typeIntoField(el.inputPassword, password)
   }
 
   submitForm() {
@@ -20,13 +18,8 @@ class LoginPage {
   }
 
   fillCredentials({ email, password }) {
-    if (email) {
-      this.typeEmail(email)
-    }
-
-    if (password) {
-      this.typePassword(password)
-    }
+    if (email) this.typeEmail(email)
+    if (password) this.typePassword(password)
   }
 
   validateSuccess() {
@@ -35,6 +28,11 @@ class LoginPage {
 
   validateMessage(message) {
     cy.get(el.alertMessage).should('contain', message)
+  }
+
+  typeIntoField(selector, value) {
+    cy.get(selector).clear()
+    cy.get(selector).type(value)
   }
 }
 
