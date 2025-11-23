@@ -1,9 +1,35 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
+import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps'
 import Login from '../pages/Login'
+import Organization from '../pages/Organization'
 
 Given('estou na página de login', () => {
   Login.accessLoginPage()
 })
+
+Given('estou na página de Organization', () => {
+  Organization.accessOrganizationPage()
+})
+
+When('clico no botao', () => {
+  Organization.clickButton()
+})
+
+And('escrevo o nome da org', () => {
+  Organization.typeNewOrg('teste')
+})
+
+Then('clico no botao salvar', () => {
+  Organization.clickButtonSalvar()
+  Organization.saveGeneratedOrgId() // <<< SALVA O ID AQUI
+})
+
+When('clico no card do org', () => {
+  Organization.clickCardOrg() // <<< USA O ID SALVO
+})
+
+//
+// LOGIN STEPS
+//
 
 When('o usuário informa o email {string}', (email) => {
   Login.typeEmail(email)
