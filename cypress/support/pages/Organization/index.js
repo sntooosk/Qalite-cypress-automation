@@ -10,25 +10,24 @@ class OrganizationPage {
   }
 
   clickNewOrganizationButton() {
-    cy.get(el.buttonNewOrg).click()
+    this.click(el.buttonNewOrg)
   }
 
   clickButtonGerenciar() {
-    cy.get(el.buttonGerenciarOrg).click()
+    this.click(el.buttonGerenciarOrg)
   }
 
   clickButtonApagarOrg() {
-    cy.get(el.buttonApagarOrg).click()
+    this.click(el.buttonApagarOrg)
   }
 
   typeNewOrganization(name) {
     this.lastOrganizationName = name
-    cy.get(el.inputNewOrg).clear()
-    cy.get(el.inputNewOrg).type(name)
+    this.fillField(el.inputNewOrg, name)
   }
 
   saveOrganization() {
-    cy.get(el.buttonSaveOrg).click()
+    this.click(el.buttonSaveOrg)
   }
 
   storeCreatedOrganizationId() {
@@ -38,16 +37,19 @@ class OrganizationPage {
       throw new Error('No organization name was provided before saving')
     }
 
-    cy.contains(el.cardOrgPrefix, organizationName).then(($card) => {
-      const value = $card.attr('data-testid')
-      const id = value?.replace('organization-card-', '')
+    cy.contains(el.cardOrgPrefix, organizationName)
+      .invoke('attr', 'data-testid')
+      .then((value) => {
+        const id = value?.replace('organization-card-', '')
 
-      if (!id) {
-        throw new Error('Failed to capture the ID of the created organization')
-      }
+        if (!id) {
+          throw new Error(
+            'Failed to capture the ID of the created organization',
+          )
+        }
 
-      Cypress.env('orgId', id)
-    })
+        Cypress.env('orgId', id)
+      })
   }
 
   clickSavedOrganizationCard() {
@@ -58,6 +60,15 @@ class OrganizationPage {
     }
 
     cy.get(el.cardOrg(id)).click()
+  }
+
+  click(selector) {
+    cy.get(selector).click()
+  }
+
+  fillField(selector, value) {
+    cy.get(selector).clear()
+    cy.get(selector).type(value)
   }
 }
 
