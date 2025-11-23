@@ -9,7 +9,7 @@ on:
         type: choice
         options:
           - ALL
-          - login
+          - Login
           - Organization
 
       device:
