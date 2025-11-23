@@ -1,9 +1,5 @@
-import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
+import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 import Login from '../pages/Login'
-
-Before(() => {
-  cy.resetSession()
-})
 
 Given('estou na página de login', () => {
   Login.accessLoginPage()
