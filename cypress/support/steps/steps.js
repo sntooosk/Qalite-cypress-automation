@@ -1,29 +1,33 @@
 import { Before, Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 import LoginPage from '../pages/Login'
 import OrganizationPage from '../pages/Organization'
+import ProfilePage from '../pages/Profile'
 
-const clearBrowserState = () => {
-  cy.window().then((win) => {
-    if (win.indexedDB?.databases) {
-      win.indexedDB.databases().then((databases) => {
-        databases.forEach((database) => {
-          if (database?.name) {
-            win.indexedDB.deleteDatabase(database.name)
-          }
-        })
-      })
-    }
-  })
+/*-------------------------------------------*/
+/* FAKER-BR */
+const faker = require('faker-br')
 
-  cy.clearLocalStorage()
-  cy.clearCookies()
-}
+/* Personal Data */
+const firstNameFaker = faker.name.firstName()
+const lastNameFaker = faker.name.lastName()
+const companyFaker = faker.company.companyName()
+
+const invalidEmailFaker = faker.internet.email(
+  firstNameFaker,
+  lastNameFaker,
+  'qualitydigital.global',
+)
+
+const invalidPasswordFaker = faker.internet.password(16)
+
+/*-------------------------------------------*/
 
 Before({ tags: '@logout' }, () => {
-  clearBrowserState()
+  cy.logout()
 })
 
-// Navigation
+/*--------------- Navigation ----------------*/
+
 Given('the user is on the login page', () => {
   LoginPage.open()
 })
@@ -32,13 +36,14 @@ Given('the user is on the organization page', () => {
   OrganizationPage.open()
 })
 
-// Login
-When('the user provides the email {string}', (email) => {
-  LoginPage.typeEmail(email)
+/*------------------- Login -------------------*/
+
+When('the user provides the email fake', () => {
+  LoginPage.typeEmail(invalidEmailFaker)
 })
 
-When('the user provides the password {string}', (password) => {
-  LoginPage.typePassword(password)
+When('the user provides the password fake', () => {
+  LoginPage.typePassword(invalidPasswordFaker)
 })
 
 When('the user submits the login form', () => {
@@ -57,13 +62,14 @@ Then('the login feedback message {string} is shown', (message) => {
   LoginPage.expectFeedbackMessage(message)
 })
 
-// Organization
+/*-------------- Organization ----------------*/
+
 When('the user starts creating a new organization', () => {
   OrganizationPage.startNewOrganization()
 })
 
-When('the user enters the organization name {string}', (name) => {
-  OrganizationPage.enterOrganizationName(name)
+When('the user enters the organization name fake', () => {
+  OrganizationPage.enterOrganizationName(companyFaker)
 })
 
 Then('the user saves the organization', () => {
@@ -82,4 +88,18 @@ When('the user opens the organization management menu', () => {
 Then('the user deletes the organization', () => {
   OrganizationPage.deleteOrganization()
   OrganizationPage.confirmOrganization()
+})
+
+/*------------------- Profile -------------------*/
+
+When('the user visits the profile page', () => {
+  ProfilePage.open()
+})
+
+When('the user types a new last name fake', () => {
+  ProfilePage.typeLastName(lastNameFaker)
+})
+
+Then('the user updates the profile', () => {
+  ProfilePage.saveProfile()
 })

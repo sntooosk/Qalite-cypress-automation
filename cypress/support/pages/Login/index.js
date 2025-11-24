@@ -1,5 +1,5 @@
 import BasePage from '../BasePage'
-import { ELEMENTS as loginElements } from './elements'
+import { ELEMENTS } from '../Organization/elements'
 
 class LoginPage extends BasePage {
   open() {
@@ -7,15 +7,15 @@ class LoginPage extends BasePage {
   }
 
   typeEmail(email) {
-    this.typeText(loginElements.emailField, email)
+    this.typeText(ELEMENTS.emailField, email)
   }
 
   typePassword(password) {
-    this.typeText(loginElements.passwordField, password)
+    this.typeText(ELEMENTS.passwordField, password)
   }
 
   submit() {
-    this.click(loginElements.submitButton)
+    this.click(ELEMENTS.submitButton)
   }
 
   fillCredentials({ email, password }) {
@@ -33,7 +33,7 @@ class LoginPage extends BasePage {
   }
 
   expectFeedbackMessage(message) {
-    this.shouldContainText(loginElements.feedbackMessage, message)
+    this.shouldContainText(ELEMENTS.feedbackMessage, message)
   }
 }
 
