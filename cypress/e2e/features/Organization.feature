@@ -6,7 +6,7 @@ Feature: Organization management
 
   Scenario: Create a new organization
     When the user starts creating a new organization
-    And the user enters the organization name "Test Organization"
+    And the user enters the organization name fake
     Then the user saves the organization
 
   Scenario: Delete an existing organization

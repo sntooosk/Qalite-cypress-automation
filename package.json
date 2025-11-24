@@ -12,13 +12,7 @@
     "cy:open:desktop": "cypress open -c viewportWidth=1921,viewportHeight=1081 --env environment=desktop",
     "cy:open:mobile": "cypress open -c viewportWidth=375,viewportHeight=667 --env environment=mobile",
     "bs:run:desktop": "dotenv -- browserstack-cypress run -c viewportWidth=1921,viewportHeight=1081 --env environment=desktop",
-    "bs:run:mobile": "dotenv -- browserstack-cypress run -c viewportWidth=375,viewportHeight=667 --env environment=mobile",
-    "bs:regression:desktop": "npm run bs:run:desktop -- -b \"QA Lite - Regression Test Desktop\"",
-    "bs:regression:mobile": "npm run bs:run:mobile -- -b \"QA Lite - Regression Test Mobile\"",
-    "bs:smoke:desktop": "npm run bs:run:desktop -- --spec cypress/e2e/features/OrderTest.feature -b \"QA Lite - Smoke Test Desktop\"",
-    "bs:smoke:mobile": "npm run bs:run:mobile -- --spec cypress/e2e/features/OrderTest.feature -b \"QA Lite - Smoke Test Mobile\"",
-    "bs:spec:desktop": "npm run bs:run:desktop -- --spec cypress/e2e/features/PdpTest.feature -b \"QA Lite - Spec Test Desktop\"",
-    "bs:spec:mobile": "npm run bs:run:mobile -- --spec cypress/e2e/features/PdpTest.feature -b \"QA Lite - Spec Test Mobile\""
+    "bs:run:mobile": "dotenv -- browserstack-cypress run -c viewportWidth=375,viewportHeight=667 --env environment=mobile"
   },
   "keywords": [
     "cypress",

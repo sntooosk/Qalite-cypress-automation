@@ -1,5 +1,5 @@
 import BasePage from '../BasePage'
-import { ELEMENTS as organizationElements } from './elements'
+import { ELEMENTS } from './elements'
 
 class OrganizationPage extends BasePage {
   constructor() {
@@ -12,27 +12,27 @@ class OrganizationPage extends BasePage {
   }
 
   startNewOrganization() {
-    this.click(organizationElements.newOrganizationButton)
+    this.click(ELEMENTS.newOrganizationButton)
   }
 
   enterOrganizationName(name) {
     this.createdOrganizationName = name
-    this.typeText(organizationElements.organizationNameInput, name)
+    this.typeText(ELEMENTS.organizationNameInput, name)
   }
 
   saveOrganization() {
-    this.click(organizationElements.saveOrganizationButton)
+    this.click(ELEMENTS.saveOrganizationButton)
   }
 
   openManagementMenu() {
-    this.click(organizationElements.manageOrganizationButton)
+    this.click(ELEMENTS.manageOrganizationButton)
   }
 
   deleteOrganization() {
-    this.click(organizationElements.deleteOrganizationButton)
+    this.click(ELEMENTS.deleteOrganizationButton)
   }
   confirmOrganization() {
-    this.click(organizationElements.confirmDeleteButton)
+    this.click(ELEMENTS.confirmDeleteButton)
   }
 
   rememberCreatedOrganizationId() {
@@ -40,10 +40,7 @@ class OrganizationPage extends BasePage {
       throw new Error('Organization name must be provided before saving it.')
     }
 
-    cy.contains(
-      organizationElements.organizationCardPrefix,
-      this.createdOrganizationName,
-    )
+    cy.contains(ELEMENTS.organizationCardPrefix, this.createdOrganizationName)
       .invoke('attr', 'data-testid')
       .then((idValue) => {
         const organizationId = idValue?.replace('organization-card-', '')
@@ -65,7 +62,7 @@ class OrganizationPage extends BasePage {
       )
     }
 
-    this.click(organizationElements.organizationCard(organizationId))
+    this.click(ELEMENTS.organizationCard(organizationId))
   }
 }
 

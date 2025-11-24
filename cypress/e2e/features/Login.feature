@@ -9,7 +9,7 @@ Feature: Login
     Then the user should be logged in
 
   Scenario: Login with an incorrect password
-    When the user provides the email "juliano.cassimiro@qualitydigital.global"
-    And the user provides the password "invalid_password"
+    When the user provides the email fake
+    And the user provides the password fake
     And the user submits the login form
     Then the login feedback message "E-mail ou senha incorretos. Confira os dados informados." is shown
