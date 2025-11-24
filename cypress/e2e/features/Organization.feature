@@ -8,8 +8,17 @@ Feature: Organization management
     When the user starts creating a new organization
     And the user enters the organization name fake
     Then the user saves the organization
+    And the toast message "Nova organização criada." is displayed
+
+  Scenario: Edit an existing organization
+    When the user selects the saved organization card
+    And the user opens the organization management menu
+    And the user enters the organization new name fake
+    Then the user updates the organization
+    And the toast message "Organização atualizada com sucesso." is displayed
 
   Scenario: Delete an existing organization
     When the user selects the saved organization card
     And the user opens the organization management menu
     Then the user deletes the organization
+    And the toast message "Organização removida com sucesso." is displayed

@@ -19,9 +19,16 @@ class OrganizationPage extends BasePage {
     this.createdOrganizationName = name
     this.typeText(ELEMENTS.organizationNameInput, name)
   }
+  enterOrganizationNameSettings(name) {
+    this.createdOrganizationName = name
+    this.typeText(ELEMENTS.organizationNameSettingsInput, name)
+  }
 
   saveOrganization() {
     this.click(ELEMENTS.saveOrganizationButton)
+  }
+  updateOrganization() {
+    this.click(ELEMENTS.updateOrganizationButton)
   }
 
   openManagementMenu() {

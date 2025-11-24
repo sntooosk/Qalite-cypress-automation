@@ -11,4 +11,4 @@ Feature: Login
     When the user provides the email fake
     And the user provides the password fake
     And the user submits the login form
-    Then the login feedback message "E-mail ou senha incorretos. Confira os dados informados." is shown
+    And the toast message "E-mail ou senha incorretos. Confira os dados informados." is displayed
