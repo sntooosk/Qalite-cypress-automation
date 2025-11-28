@@ -18,6 +18,9 @@ class ProfilePage extends BasePage {
   saveProfile() {
     this.click(ELEMENTS.updateButton)
   }
+  expectNameHeader(name) {
+    this.shouldContainText(ELEMENTS.HEADER.userName, name)
+  }
 }
 
 export default new ProfilePage()

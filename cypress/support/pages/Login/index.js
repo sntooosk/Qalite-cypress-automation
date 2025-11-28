@@ -31,10 +31,6 @@ class LoginPage extends BasePage {
   expectSuccessfulLogin() {
     cy.url().should('include', '/admin')
   }
-
-  expectFeedbackMessage(message) {
-    this.shouldContainText(ELEMENTS.feedbackMessage, message)
-  }
 }
 
 export default new LoginPage()

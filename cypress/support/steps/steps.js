@@ -8,11 +8,13 @@ import {
   randomLastName,
   randomPassword,
 } from '../utils/generators'
+import Toast from '../pages/components/Toast'
 
 const lastNameFaker = randomLastName()
 const companyFaker = randomCompanyName()
 const invalidEmailFaker = randomEmail('qualitydigital.global')
 const invalidPasswordFaker = randomPassword(16)
+
 /*--------------- Navigation ----------------*/
 
 Given('the user is on the login page', () => {
@@ -45,10 +47,6 @@ Then('the user should be logged in', () => {
   LoginPage.expectSuccessfulLogin()
 })
 
-Then('the login feedback message {string} is shown', (message) => {
-  LoginPage.expectFeedbackMessage(message)
-})
-
 /*-------------- Organization ----------------*/
 
 When('the user starts creating a new organization', () => {
@@ -59,9 +57,17 @@ When('the user enters the organization name fake', () => {
   OrganizationPage.enterOrganizationName(companyFaker)
 })
 
+When('the user enters the organization new name fake', () => {
+  OrganizationPage.enterOrganizationNameSettings(companyFaker)
+})
+
 Then('the user saves the organization', () => {
   OrganizationPage.saveOrganization()
   OrganizationPage.rememberCreatedOrganizationId()
+})
+
+Then('the user updates the organization', () => {
+  OrganizationPage.updateOrganization()
 })
 
 When('the user selects the saved organization card', () => {
@@ -77,6 +83,10 @@ Then('the user deletes the organization', () => {
   OrganizationPage.confirmOrganization()
 })
 
+When('the toast message {string} is displayed', (message) => {
+  Toast.confirmMessage(message)
+})
+
 /*------------------- Profile -------------------*/
 
 When('the user visits the profile page', () => {
@@ -89,4 +99,8 @@ When('the user types a new last name fake', () => {
 
 Then('the user updates the profile', () => {
   ProfilePage.saveProfile()
+})
+
+When('the user name Header last name fake', () => {
+  ProfilePage.expectNameHeader(lastNameFaker)
 })

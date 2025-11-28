@@ -1,6 +1,8 @@
 export const ELEMENTS = {
   newOrganizationButton: '[data-testid="new-organization-button"]',
   organizationNameInput: '[data-testid="organization-name-input"]',
+  organizationNameSettingsInput: '[data-testid="organization-settings-name"]',
+  updateOrganizationButton: '[data-testid="save-organization-settings"]',
   saveOrganizationButton: '[data-testid="save-organization-button"]',
   manageOrganizationButton: '[data-testid="manage-organization-button"]',
   deleteOrganizationButton: '[data-testid="delete-organization-button"]',
