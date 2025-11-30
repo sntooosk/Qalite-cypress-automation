@@ -1,5 +1,6 @@
 import BasePage from '../BasePage'
 import { ELEMENTS } from './elements'
+import organization from '../../../fixtures/organization.json'
 
 class OrganizationPage extends BasePage {
   constructor() {
@@ -14,6 +15,7 @@ class OrganizationPage extends BasePage {
   startNewOrganization() {
     this.click(ELEMENTS.newOrganizationButton)
   }
+
   startNewStore() {
     this.click(ELEMENTS.newStoreOrganization)
   }
@@ -22,6 +24,7 @@ class OrganizationPage extends BasePage {
     this.createdOrganizationName = name
     this.typeText(ELEMENTS.organizationNameInput, name)
   }
+
   enterOrganizationNameSettings(name) {
     this.createdOrganizationName = name
     this.typeText(ELEMENTS.organizationNameSettingsInput, name)
@@ -30,6 +33,7 @@ class OrganizationPage extends BasePage {
   saveOrganization() {
     this.click(ELEMENTS.saveOrganizationButton)
   }
+
   updateOrganization() {
     this.click(ELEMENTS.updateOrganizationButton)
   }
@@ -40,9 +44,6 @@ class OrganizationPage extends BasePage {
 
   deleteOrganization() {
     this.click(ELEMENTS.deleteOrganizationButton)
-  }
-  confirmOrganization() {
-    this.click(ELEMENTS.confirmDeleteButton)
   }
 
   rememberCreatedOrganizationId() {
@@ -67,7 +68,7 @@ class OrganizationPage extends BasePage {
     const organizationId = Cypress.env('organizationId')
 
     if (!organizationId) {
-      this.click(ELEMENTS.organizationCard('fPfUlZajrgFsipvEi9kd'))
+      this.click(ELEMENTS.organizationCard(organization.id))
     } else {
       this.click(ELEMENTS.organizationCard(organizationId))
     }
